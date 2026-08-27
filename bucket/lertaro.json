@@ -1,0 +1,50 @@
+{
+    "version": "4.9.0",
+    "description": "A modern, high-performance local file search and productivity tool for Windows. A sleek, customizable alternative to Everything and Listary.",
+    "homepage": "https://lertaro.github.io/",
+    "license": "MIT",
+    "depends": "dotnet-sdk",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Lertaro/Lertaro/releases/download/v4.9.0/Lertaro-Portable.zip",
+            "hash": "7f5255708a87a93347bec06b9c9397b59be4b5e7c4615410873c98185bffa549"
+        },
+        "arm64": {
+            "url": "https://github.com/Lertaro/Lertaro/releases/download/v4.9.0/Lertaro-Portable-arm64.zip",
+            "hash": "3b48421717b9f6a035ec0f5ea2dd47de90755c23153e407f12b3e3b76e2eae63"
+        }
+    },
+    "extract_dir": "Lertaro",
+    "bin": [
+        "Lertaro.App.exe",
+        "lff.exe"
+    ],
+    "shortcuts": [
+        [
+            "Lertaro.App.exe",
+            "Lertaro"
+        ]
+    ],
+    "persist": "Data",
+    "notes": [
+        "The .NET 10 Desktop Runtime is supplied by the 'dotnet-sdk' dependency (its env_set of DOTNET_ROOT points the apphost at scoop's SDK shared frameworks).",
+        "The optional SYSTEM indexing service (LertaroService) is not registered by the portable build; install it from the app's UI, which requires administrator rights."
+    ],
+    "checkver": {
+        "github": "https://github.com/Lertaro/Lertaro"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Lertaro/Lertaro/releases/download/v$version/Lertaro-Portable.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/Lertaro/Lertaro/releases/download/v$version/Lertaro-Portable-arm64.zip"
+            }
+        },
+        "hash": {
+            "url": "https://github.com/Lertaro/Lertaro/releases/tag/v$version",
+            "regex": "(?s)\\b$basename.*?([a-fA-F0-9]{64})"
+        }
+    }
+}
