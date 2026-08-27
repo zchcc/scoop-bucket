@@ -1,0 +1,24 @@
+{
+    "version": "0.1.0",
+    "description": "Watch a Claude Code session as a live flow graph, in your terminal or your browser.",
+    "homepage": "https://zoetrope.furkankly.dev",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/furkankly/zoetrope/releases/download/v0.1.0/zoetrope-0.1.0-x86_64-pc-windows-msvc.zip",
+            "hash": "ba5c569b6b4d66ac98db23af4316610f9fac0303ccde06c78e5b2f06f33cb37a"
+        }
+    },
+    "extract_dir": "zoetrope-0.1.0-x86_64-pc-windows-msvc",
+    "bin": "zoe.exe",
+    "checkver": {
+        "github": "https://github.com/furkankly/zoetrope"
+    },
+    "autoupdate": {
+        "url": "https://github.com/furkankly/zoetrope/releases/download/v$version/zoetrope-$version-x86_64-pc-windows-msvc.zip",
+        "extract_dir": "zoetrope-$version-x86_64-pc-windows-msvc",
+        "hash": {
+            "mode": "github"
+        }
+    }
+}
