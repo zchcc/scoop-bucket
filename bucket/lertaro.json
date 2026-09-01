@@ -1,17 +1,17 @@
 {
-    "version": "5.1.2",
+    "version": "5.1.4",
     "description": "A modern, high-performance local file search and productivity tool for Windows. A sleek, customizable alternative to Everything and Listary.",
     "homepage": "https://lertaro.github.io/",
     "license": "MIT",
     "depends": "dotnet-sdk",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Lertaro/Lertaro/releases/download/v5.1.2/Lertaro-Portable.zip",
-            "hash": "bbc7e3262e7cb47a8e52d14cba60ad4c3d81bd2a0ef56eb322cdc23b3f59f25e"
+            "url": "https://github.com/Lertaro/Lertaro/releases/download/v5.1.4/Lertaro-Portable.zip",
+            "hash": "837342854858b44178dee80d5b9e8b53fd9d4329c400fdaee2b79d32415439d8"
         },
         "arm64": {
-            "url": "https://github.com/Lertaro/Lertaro/releases/download/v5.1.2/Lertaro-Portable-arm64.zip",
-            "hash": "53c844f18c68ba0087e409b06cf3b9beca1442b01135093f7cec40b2834c0cd8"
+            "url": "https://github.com/Lertaro/Lertaro/releases/download/v5.1.4/Lertaro-Portable-arm64.zip",
+            "hash": "d176a239ec078a0dc6fa83358e174cbe058801bcc1d4beeb576583a5a072862e"
         }
     },
     "extract_dir": "Lertaro",
