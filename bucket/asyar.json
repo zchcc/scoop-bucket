@@ -1,0 +1,44 @@
+{
+    "version": "0.1.1-45",
+    "description": "A privacy-first launcher and command palette that combines Raycast-style power with Alfred-level speed, offline-first with built-in AI features.",
+    "homepage": "https://asyar.org/",
+    "license": "GPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Xoshbin/asyar/releases/download/v0.1.1-45/asyar_windows_x64_portable.zip",
+            "hash": "36f21a5c4e4b46fb5ca501d5eaf1efcc88e57c8a4dfc0b38f839f584f8032c92"
+        },
+        "arm64": {
+            "url": "https://github.com/Xoshbin/asyar/releases/download/v0.1.1-45/asyar_windows_arm64_portable.zip",
+            "hash": "e0e9d038ed6072b8e2da75800c65efff96b3d3555ab2948bcf16256cb1d191c9"
+        }
+    },
+    "bin": "asyar.exe",
+    "shortcuts": [
+        [
+            "asyar.exe",
+            "asyar"
+        ]
+    ],
+    "notes": [
+        "User data (SQLite database, settings, extensions, clipboard cache) is stored in %APPDATA%\\org.asyar.app; scoop uninstall does not remove it - delete that folder manually to fully clean up.",
+        "The app is currently distributed as a pre-release; checkver deliberately tracks the newest pre-release build via the releases atom feed."
+    ],
+    "checkver": {
+        "url": "https://github.com/Xoshbin/asyar/releases.atom",
+        "regex": "releases/tag/v([\\d.]+-\\d+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Xoshbin/asyar/releases/download/v$version/asyar_windows_x64_portable.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/Xoshbin/asyar/releases/download/v$version/asyar_windows_arm64_portable.zip"
+            }
+        },
+        "hash": {
+            "mode": "github"
+        }
+    }
+}
