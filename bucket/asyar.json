@@ -1,16 +1,16 @@
 {
-    "version": "0.1.1-46",
+    "version": "0.1.1-47",
     "description": "A privacy-first launcher and command palette that combines Raycast-style power with Alfred-level speed, offline-first with built-in AI features.",
     "homepage": "https://asyar.org/",
     "license": "GPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Xoshbin/asyar/releases/download/v0.1.1-46/asyar_windows_x64_portable.zip",
-            "hash": "9c00aa2ffc95697fc3a770d12fa82f8ada4345675a2d7aac408a395c076c699b"
+            "url": "https://github.com/Xoshbin/asyar/releases/download/v0.1.1-47/asyar_windows_x64_portable.zip",
+            "hash": "e1983b895aa2e4d651b064d6a0199bc14b1fc7f6ebe56648ffb340070691cf4f"
         },
         "arm64": {
-            "url": "https://github.com/Xoshbin/asyar/releases/download/v0.1.1-46/asyar_windows_arm64_portable.zip",
-            "hash": "160fa19e4a9fc10c2027d8970a4a166a09eab910daa2730232368266842b1f94"
+            "url": "https://github.com/Xoshbin/asyar/releases/download/v0.1.1-47/asyar_windows_arm64_portable.zip",
+            "hash": "58ff262eefdc377ff345ef033c5c6d1f6c359da58097a48014ba78738e4679ce"
         }
     },
     "bin": "asyar.exe",
