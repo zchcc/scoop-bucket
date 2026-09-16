@@ -1,0 +1,38 @@
+{
+    "version": "0.3.2",
+    "description": "Source control for coding agents, running several of them side by side against one codebase and linking every commit back to the session, prompts and tool calls that produced it.",
+    "homepage": "https://www.tryatlas.cc/",
+    "license": "Apache-2.0",
+    "suggest": {
+        "Microsoft Edge WebView2": "extras/webview2"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/pacifio/atlas/releases/download/alpha-0.3.2/Atlas_0.3.2_x64_en-US.msi",
+            "hash": "97955385ae7b66efb9d4c7c50e9850689953f51841ef2a2e30f32910491915e6"
+        }
+    },
+    "extract_dir": "PFiles\\Atlas",
+    "bin": "atlas.exe",
+    "shortcuts": [
+        [
+            "atlas.exe",
+            "Atlas"
+        ]
+    ],
+    "notes": [
+        "Scoop expands the .msi administratively instead of running it, so the installer's WebView2 bootstrap never runs: Atlas needs an existing Microsoft Edge WebView2 Runtime, which Windows 11 and most Windows 10 installs already have (see the 'suggest' above).",
+        "Atlas keeps everything outside the scoop app directory: user data (state.json, threads.db, sessions, caches) in %APPDATA%\\dev.atlas.ide, the WebView2 profile and logs in %LOCALAPPDATA%\\dev.atlas.ide, and preferences in ~/.config/atlas/config.toml. Scoop uninstall removes none of them - delete all three to clean up completely."
+    ],
+    "checkver": {
+        "github": "https://github.com/pacifio/atlas",
+        "regex": "/releases/tag/alpha-([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/pacifio/atlas/releases/download/alpha-$version/Atlas_$version_x64_en-US.msi"
+            }
+        }
+    }
+}
