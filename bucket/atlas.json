@@ -1,5 +1,5 @@
 {
-    "version": "0.3.2",
+    "version": "0.3.3",
     "description": "Source control for coding agents, running several of them side by side against one codebase and linking every commit back to the session, prompts and tool calls that produced it.",
     "homepage": "https://www.tryatlas.cc/",
     "license": "Apache-2.0",
@@ -8,8 +8,8 @@
     },
     "architecture": {
         "64bit": {
-            "url": "https://github.com/pacifio/atlas/releases/download/alpha-0.3.2/Atlas_0.3.2_x64_en-US.msi",
-            "hash": "97955385ae7b66efb9d4c7c50e9850689953f51841ef2a2e30f32910491915e6"
+            "url": "https://github.com/pacifio/atlas/releases/download/alpha-0.3.3/Atlas_0.3.3_x64_en-US.msi",
+            "hash": "d58d6ffdea30d74ef2aac5949a78fe3b22770399bda686146b5e95818337d4ab"
         }
     },
     "extract_dir": "PFiles\\Atlas",
