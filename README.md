@@ -1,4 +1,4 @@
-# Scoop Bucket 
+# Scoop Bucket
 
 A personal Scoop bucket for Windows apps not available in official buckets.
 
