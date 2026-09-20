@@ -11,19 +11,27 @@
     },
     "pre_install": [
         "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
-        "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse -Force"
+        "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse -Force",
+        "Set-Content -Path \"$dir\\pi-desktop.cmd\" -Encoding ascii -Value @('@echo off', 'set \"PORTABLE_EXECUTABLE_FILE=%~dp0PI-Desktop.exe\"', 'start \"\" \"%~dp0PI-Desktop.exe\" %*')"
     ],
-    "bin": "PI-Desktop.exe",
+    "bin": [
+        [
+            "pi-desktop.cmd",
+            "pi-desktop"
+        ]
+    ],
     "shortcuts": [
         [
-            "PI-Desktop.exe",
-            "PI-Desktop"
+            "pi-desktop.cmd",
+            "PI-Desktop",
+            "",
+            "PI-Desktop.exe"
         ]
     ],
     "notes": [
         "The portable build's own launcher is a self-extracting stub that unpacks to %TEMP% on every run; Scoop expands its payload into the app directory instead, so the app starts from there and writes nothing to %TEMP%.",
         "PI-Desktop keeps all state outside the Scoop app directory: sessions, settings, providers, secrets, plugins, attachments and logs in %USERPROFILE%\\.pi-desktop, and Electron's window state, local storage and plugin partitions in %APPDATA%\\PI-Desktop. Scoop uninstall removes neither - delete both to clean up completely.",
-        "The built-in updater only takes the no-install path when PORTABLE_EXECUTABLE_FILE is set, which an extracted copy cannot be, so once a newer release exists the app downloads PI-Desktop-Setup-<version>.exe into %LOCALAPPDATA%\\@pi-desktopdesktop-updater and runs it on quit, and that NSIS installer puts a second copy of the app outside Scoop. Update with 'scoop update pi-desktop' instead, and remove that copy plus %LOCALAPPDATA%\\@pi-desktopdesktop-updater afterwards."
+        "Both 'pi-desktop' and the Start Menu shortcut launch the app through the bundled pi-desktop.cmd wrapper, which sets PORTABLE_EXECUTABLE_FILE so PI-Desktop takes its no-install update path: it offers updates and links to the release page instead of downloading PI-Desktop-Setup-<version>.exe into %LOCALAPPDATA%\\@pi-desktopdesktop-updater and letting that NSIS installer put a second copy of the app outside Scoop on quit. Starting PI-Desktop.exe directly skips the wrapper and lets the in-app updater do exactly that, so update with 'scoop update pi-desktop'."
     ],
     "checkver": {
         "github": "https://github.com/vastsa/PI-Desktop"
