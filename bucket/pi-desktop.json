@@ -1,0 +1,38 @@
+{
+    "version": "0.15.1",
+    "description": "Local-first desktop workspace for AI coding agents, pairing an Electron shell with a Rust host core, a bundled agent runtime and installable plugins",
+    "homepage": "https://pi-docs.aiuo.net",
+    "license": "LGPL-3.0",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/vastsa/PI-Desktop/releases/download/v0.15.1/PI-Desktop-Portable-0.15.1.exe#/dl.7z",
+            "hash": "18ab30558c156cabceec07520093cc6ae600c79231b82e77086aadeb46fdd404"
+        }
+    },
+    "pre_install": [
+        "Expand-7zipArchive \"$dir\\`$PLUGINSDIR\\app-64.7z\" \"$dir\"",
+        "Remove-Item \"$dir\\`$PLUGINSDIR\" -Recurse -Force"
+    ],
+    "bin": "PI-Desktop.exe",
+    "shortcuts": [
+        [
+            "PI-Desktop.exe",
+            "PI-Desktop"
+        ]
+    ],
+    "notes": [
+        "The portable build's own launcher is a self-extracting stub that unpacks to %TEMP% on every run; Scoop expands its payload into the app directory instead, so the app starts from there and writes nothing to %TEMP%.",
+        "PI-Desktop keeps all state outside the Scoop app directory: sessions, settings, providers, secrets, plugins, attachments and logs in %USERPROFILE%\\.pi-desktop, and Electron's window state, local storage and plugin partitions in %APPDATA%\\PI-Desktop. Scoop uninstall removes neither - delete both to clean up completely.",
+        "The built-in updater only takes the no-install path when PORTABLE_EXECUTABLE_FILE is set, which an extracted copy cannot be, so once a newer release exists the app downloads PI-Desktop-Setup-<version>.exe into %LOCALAPPDATA%\\@pi-desktopdesktop-updater and runs it on quit, and that NSIS installer puts a second copy of the app outside Scoop. Update with 'scoop update pi-desktop' instead, and remove that copy plus %LOCALAPPDATA%\\@pi-desktopdesktop-updater afterwards."
+    ],
+    "checkver": {
+        "github": "https://github.com/vastsa/PI-Desktop"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/vastsa/PI-Desktop/releases/download/v$version/PI-Desktop-Portable-$version.exe#/dl.7z"
+            }
+        }
+    }
+}
