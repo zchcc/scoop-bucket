@@ -1,12 +1,12 @@
 {
-    "version": "0.15.3",
+    "version": "0.15.7",
     "description": "Local-first desktop workspace for AI coding agents, pairing an Electron shell with a Rust host core, a bundled agent runtime and installable plugins",
     "homepage": "https://pi-docs.aiuo.net",
     "license": "LGPL-3.0",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/vastsa/PI-Desktop/releases/download/v0.15.3/PI-Desktop-Portable-0.15.3.exe#/dl.7z",
-            "hash": "d543dfdf9cfab694125dbcf11438de5ec6578988102bc1122c484e1a6f3942bc"
+            "url": "https://github.com/vastsa/PI-Desktop/releases/download/v0.15.7/PI-Desktop-Portable-0.15.7.exe#/dl.7z",
+            "hash": "b6af1b25fbaf660559a586757c0f3154fe77efe207b4cae3546fec7dd8c75a8f"
         }
     },
     "pre_install": [
