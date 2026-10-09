@@ -36,9 +36,6 @@
             "arm64": {
                 "url": "https://github.com/Xoshbin/asyar/releases/download/v$version/asyar_windows_arm64_portable.zip"
             }
-        },
-        "hash": {
-            "mode": "github"
         }
     }
 }
