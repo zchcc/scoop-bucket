@@ -16,9 +16,6 @@
     },
     "autoupdate": {
         "url": "https://github.com/furkankly/zoetrope/releases/download/v$version/zoetrope-$version-x86_64-pc-windows-msvc.zip",
-        "extract_dir": "zoetrope-$version-x86_64-pc-windows-msvc",
-        "hash": {
-            "mode": "github"
-        }
+        "extract_dir": "zoetrope-$version-x86_64-pc-windows-msvc"
     }
 }
