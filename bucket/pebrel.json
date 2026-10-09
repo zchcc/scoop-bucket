@@ -1,0 +1,42 @@
+{
+    "version": "1.9.0",
+    "description": "AI-native, GPU-accelerated terminal emulator with SSH, persistent sessions, split panes, and first-class AI CLI workflows",
+    "homepage": "https://github.com/Kuddev/pebrel",
+    "license": "GPL-3.0",
+    "notes": [
+        "Settings, session data and logs are stored in %APPDATA%\\Pebrel (override with PEBREL_CONFIG_DIR); an optional portable config file pebrel.lua placed beside pebrel.exe takes precedence.",
+        "In-app updates detect this package as a portable copy and refuse to self-install - update via scoop. Downloaded update packages may accumulate in %APPDATA%\\Pebrel\\updates\\.",
+        "Optional AI CLI integrations (Claude Code, Codex, OpenCode, ...) write hooks into their own config directories; disable them in Settings before uninstalling to remove those leftovers.",
+        "Saved credentials are stored in Windows Credential Manager under the service name 'Pebrel'."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Kuddev/pebrel/releases/download/v1.9.0/Pebrel-v1.9.0-windows-x64.zip",
+            "hash": "1c219946450c7d93993394fd6d40c6e234d77547c9b4a98106c0d33ada9c27f9"
+        },
+        "arm64": {
+            "url": "https://github.com/Kuddev/pebrel/releases/download/v1.9.0/Pebrel-v1.9.0-windows-arm64.zip",
+            "hash": "e2d062089afb19ddb9e3d078cc7f460a1d67cb36d95400cebab837f9fabda092"
+        }
+    },
+    "bin": "pebrel.exe",
+    "shortcuts": [
+        [
+            "pebrel.exe",
+            "Pebrel"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/Kuddev/pebrel"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Kuddev/pebrel/releases/download/v$version/Pebrel-v$version-windows-x64.zip"
+            },
+            "arm64": {
+                "url": "https://github.com/Kuddev/pebrel/releases/download/v$version/Pebrel-v$version-windows-arm64.zip"
+            }
+        }
+    }
+}
