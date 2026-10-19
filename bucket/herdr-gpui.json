@@ -1,5 +1,5 @@
 {
-    "version": "20261016.1",
+    "version": "20261019.1",
     "description": "Native client for the Herdr daemon: view terminal sessions, workspaces, Git worktrees, and agent activity",
     "homepage": "https://herdrui.dev",
     "license": "Apache-2.0",
@@ -9,14 +9,14 @@
     ],
     "architecture": {
         "64bit": {
-            "url": "https://github.com/penso/herdr-gpui/releases/download/v20261016.1/Herdr-20261016.1-x86_64-pc-windows-msvc.zip",
-            "hash": "8fc0af3a1cfb90980a5a47083c99d3ec6cefae96c2c40fcf41d025f52b9ddf2c",
-            "extract_dir": "Herdr-20261016.1-x86_64-pc-windows-msvc"
+            "url": "https://github.com/penso/herdr-gpui/releases/download/v20261019.1/Herdr-20261019.1-x86_64-pc-windows-msvc.zip",
+            "hash": "6996058d1a5c311d4bcdbf00855bf3029e8bd0edf9d60162b3af708f55ad27a8",
+            "extract_dir": "Herdr-20261019.1-x86_64-pc-windows-msvc"
         },
         "arm64": {
-            "url": "https://github.com/penso/herdr-gpui/releases/download/v20261016.1/Herdr-20261016.1-aarch64-pc-windows-msvc.zip",
-            "hash": "8b089cf489525b8752e719cf40ef58dab389322f10f5689dc4c386f783bb2511",
-            "extract_dir": "Herdr-20261016.1-aarch64-pc-windows-msvc"
+            "url": "https://github.com/penso/herdr-gpui/releases/download/v20261019.1/Herdr-20261019.1-aarch64-pc-windows-msvc.zip",
+            "hash": "4429bff258bf3d5d7de1072c4ef1ea75912e100e587053941dcd14457e1b81e4",
+            "extract_dir": "Herdr-20261019.1-aarch64-pc-windows-msvc"
         }
     },
     "bin": "herdr-gpui.exe",
