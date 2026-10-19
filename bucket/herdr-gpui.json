@@ -1,0 +1,44 @@
+{
+    "version": "20261014.1",
+    "description": "Native client for the Herdr daemon: view terminal sessions, workspaces, Git worktrees, and agent activity",
+    "homepage": "https://herdrui.dev",
+    "license": "Apache-2.0",
+    "notes": [
+        "Requires a running Herdr daemon to connect to.",
+        "Configuration and app state are stored in %APPDATA%\\herdr and %LOCALAPPDATA%\\herdr - these are shared with the daemon and are not removed on uninstall."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/penso/herdr-gpui/releases/download/v20261014.1/Herdr-20261014.1-x86_64-pc-windows-msvc.zip",
+            "hash": "26448725f903849c61eb47d14166985801649c392a95e953e7e3d640fa90df2e",
+            "extract_dir": "Herdr-20261014.1-x86_64-pc-windows-msvc"
+        },
+        "arm64": {
+            "url": "https://github.com/penso/herdr-gpui/releases/download/v20261014.1/Herdr-20261014.1-aarch64-pc-windows-msvc.zip",
+            "hash": "c6d8815d380fe6bf8315bf1dc40baf8cd678197b659ba6c3f0d2aa872f89a11c",
+            "extract_dir": "Herdr-20261014.1-aarch64-pc-windows-msvc"
+        }
+    },
+    "bin": "herdr-gpui.exe",
+    "shortcuts": [
+        [
+            "herdr-gpui.exe",
+            "Herdr"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/penso/herdr-gpui"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/penso/herdr-gpui/releases/download/v$version/Herdr-$version-x86_64-pc-windows-msvc.zip",
+                "extract_dir": "Herdr-$version-x86_64-pc-windows-msvc"
+            },
+            "arm64": {
+                "url": "https://github.com/penso/herdr-gpui/releases/download/v$version/Herdr-$version-aarch64-pc-windows-msvc.zip",
+                "extract_dir": "Herdr-$version-aarch64-pc-windows-msvc"
+            }
+        }
+    }
+}
