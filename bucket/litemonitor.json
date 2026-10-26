@@ -1,0 +1,45 @@
+{
+    "version": "1.3.6",
+    "description": "Lightweight, customizable hardware monitor for the Windows desktop and taskbar, tracking CPU, GPU, memory, disk, network and FPS",
+    "homepage": "https://litemonitor.cn",
+    "license": "MIT",
+    "suggest": {
+        ".NET Desktop Runtime 8.0": "versions/windowsdesktop-runtime-8.0"
+    },
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Diorser/LiteMonitor/releases/download/v1.3.6/LiteMonitor_v1.3.6-win-x64.zip",
+            "hash": "966c60e0e327d995f8f6edf59c630331a24fdc7aeb4c5765ab539cbf6a6471d7",
+            "extract_dir": "LiteMonitor_v1.3.6-win-x64"
+        }
+    },
+    "pre_install": "'settings.json', 'TrafficHistory.json', 'HardwareHistory.json' | ForEach-Object { if (!(Test-Path \"$dir\\$_\")) { New-Item -Path \"$dir\\$_\" -ItemType File | Out-Null } }",
+    "shortcuts": [
+        [
+            "LiteMonitor.exe",
+            "LiteMonitor"
+        ]
+    ],
+    "persist": [
+        "settings.json",
+        "TrafficHistory.json",
+        "HardwareHistory.json"
+    ],
+    "pre_uninstall": "'settings.json', 'TrafficHistory.json', 'HardwareHistory.json' | ForEach-Object { if (Test-Path \"$dir\\$_\" -PathType Leaf) { Copy-Item \"$dir\\$_\" \"$persist_dir\\$_\" -Force } }",
+    "notes": [
+        "LiteMonitor asks to download and install the PawnIO kernel driver on first run; the driver and its service are installed outside the Scoop app directory and are not removed by 'scoop uninstall'. The optional FPS component is downloaded into the app's resources folder instead.",
+        "Enabling autostart creates the scheduled task 'LiteMonitor_AutoStart' pointing at the current app path. Delete the task with 'schtasks /Delete /TN LiteMonitor_AutoStart /F' after removing LiteMonitor.",
+        "The built-in updater replaces files inside the Scoop app directory; run 'scoop update litemonitor' instead so the installed version and manifest stay in sync."
+    ],
+    "checkver": {
+        "github": "https://github.com/Diorser/LiteMonitor"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Diorser/LiteMonitor/releases/download/v$version/LiteMonitor_v$version-win-x64.zip",
+                "extract_dir": "LiteMonitor_v$version-win-x64"
+            }
+        }
+    }
+}
