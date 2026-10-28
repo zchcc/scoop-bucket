@@ -14,8 +14,10 @@
         }
     },
     "pre_install": [
-        "Get-ChildItem -Path \"$dir\\NyaTerm-portable\" -Force | Move-Item -Destination \"$dir\" -Force",
-        "Remove-Item -Path \"$dir\\NyaTerm-portable\" -Force -Recurse"
+        "Get-ChildItem -Path \"$dir\\NyaTerm-portable\" -Force | Where-Object Name -ne 'nyaterm-portable' | Move-Item -Destination \"$dir\" -Force",
+        "Move-Item -Path \"$dir\\NyaTerm-portable\\nyaterm-portable\" -Destination \"$dir\\nyaterm-portable.tmp\" -Force",
+        "Remove-Item -Path \"$dir\\NyaTerm-portable\" -Force -Recurse",
+        "Rename-Item -Path \"$dir\\nyaterm-portable.tmp\" -NewName 'nyaterm-portable'"
     ],
     "bin": "NyaTerm.exe",
     "shortcuts": [
