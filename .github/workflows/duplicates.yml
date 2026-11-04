@@ -1,0 +1,53 @@
+name: Duplicates
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 每 12 小时巡检一次（00:17、12:17 UTC）
+    - cron: '17 */12 * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+# 定时任务与手动触发共用同一条分支，禁止并发改写
+concurrency:
+  group: duplicates
+  cancel-in-progress: false
+
+jobs:
+  duplicates:
+    name: Check Duplicates
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Bucket
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      # 官方 bucket 克隆到 workspace 之外，避免被 create-pull-request 一起提交
+      - name: Checkout official buckets
+        shell: pwsh
+        run: |
+          $officialPath = Join-Path $env:RUNNER_TEMP 'official'
+          New-Item -ItemType Directory -Force -Path $officialPath | Out-Null
+          foreach ($bucket in 'Main', 'Extras') {
+              $target = Join-Path $officialPath $bucket
+              git clone --quiet --depth 1 --filter=blob:none --sparse "https://github.com/ScoopInstaller/$bucket" $target
+              git -C $target sparse-checkout set bucket
+          }
+
+      - name: Detect duplicate manifests
+        shell: pwsh
+        run: |
+          ./bin/check-duplicates.ps1 `
+              -OfficialPath (Join-Path $env:RUNNER_TEMP 'official') `
+              -BodyFile (Join-Path $env:RUNNER_TEMP 'duplicates-pr-body.md')
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          branch: automation/remove-duplicates
+          delete-branch: true
+          add-paths: bucket
+          title: 'chore: 移除已收录到官方 bucket 的清单'
+          commit-message: 'chore: 移除已收录到官方 bucket 的清单'
+          body-path: ${{ runner.temp }}/duplicates-pr-body.md
