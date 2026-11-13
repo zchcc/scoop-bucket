@@ -1,0 +1,35 @@
+{
+    "version": "0.5.0",
+    "description": "A fast, modern, information-rich Windows task manager",
+    "homepage": "https://argustask.com",
+    "license": "AGPL-3.0",
+    "notes": [
+        "This is the portable copy: it does not update itself and only links to the download page. Update with 'scoop update argus'.",
+        "Settings and history are stored in %APPDATA%\\dev.argus.taskmanager and %LOCALAPPDATA%\\dev.argus.taskmanager, shared with an installed Argus, and stay after uninstalling.",
+        "Optional privileged features write outside scoop after administrator approval: the privileged service to 'C:\\Program Files\\Argus Privileged' (service 'ArgusPrivileged'), the administrator startup copy to 'C:\\Program Files\\Argus Runtime', the PawnIO sensor setup to 'C:\\Program Files\\Argus Sensor Setup'. Remove them in Settings before uninstalling.",
+        "Start at sign-in writes the 'Argus' value under HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run; turn it off in Settings before uninstalling."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Ray-lea/Argus/releases/download/v0.5.0/Argus_0.5.0_x64.exe#/argus.exe",
+            "hash": "a23fd2a4d0afa18e4f2a6fc52bea559e4a326466ad95f2775873a13284359bde"
+        }
+    },
+    "bin": "argus.exe",
+    "shortcuts": [
+        [
+            "argus.exe",
+            "Argus"
+        ]
+    ],
+    "checkver": {
+        "github": "https://github.com/Ray-lea/Argus"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Ray-lea/Argus/releases/download/v$version/Argus_$version_x64.exe#/argus.exe"
+            }
+        }
+    }
+}
