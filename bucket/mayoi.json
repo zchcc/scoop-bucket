@@ -1,0 +1,42 @@
+{
+    "version": "0.23.0",
+    "description": "A small, fast code editor written in Go, with a native GPU-drawn UI",
+    "homepage": "https://usemayoi.com",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/sorrycc/Mayoi/releases/download/v0.23.0/mayoi-0.23.0-windows-amd64.tar.gz",
+            "hash": "71b6f1e478ea94e39c66ec1329025e5d89991700db9f0ed4e7ddd99fa1941625"
+        },
+        "arm64": {
+            "url": "https://github.com/sorrycc/Mayoi/releases/download/v0.23.0/mayoi-0.23.0-windows-arm64.tar.gz",
+            "hash": "64bb993cd149e197ce94584b1279568a153eae0c4b9a2908247e5a64aea9dbdc"
+        }
+    },
+    "bin": "Mayoi.exe",
+    "shortcuts": [
+        [
+            "Mayoi.exe",
+            "Mayoi"
+        ]
+    ],
+    "notes": [
+        "The official Windows build is an NSIS installer that unpacks into %LOCALAPPDATA%\\Programs\\Mayoi; Scoop unpacks the same archive tree instead and the app starts from the Scoop directory.",
+        "Mayoi keeps its settings, window state, sessions and crash logs in %APPDATA%\\Mayoi. Its self-updater cannot write to the Scoop directory, so it never updates this copy - update with 'scoop update mayoi'. Scoop uninstall removes neither this folder nor the two it names next - delete them to clean up completely.",
+        "The 'mayoi' command comes from Scoop's shim; skip Mayoi's own Command Palette command \"Install 'mayoi' Command\", which writes %LOCALAPPDATA%\\Mayoi\\bin and adds it to the user PATH, both of which outlive 'scoop uninstall'. Remove that command, and the user PATH entry, from the same Command Palette first.",
+        "The 'Open with Mayoi' Explorer context menu (HKCU\\Software\\Classes\\*|Directory|Directory\\Background\\shell\\dev.mayoi.editor) and a Start Menu shortcut are only created by the installer, not by the archive."
+    ],
+    "checkver": {
+        "github": "https://github.com/sorrycc/Mayoi"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/sorrycc/Mayoi/releases/download/v$version/mayoi-$version-windows-amd64.tar.gz"
+            },
+            "arm64": {
+                "url": "https://github.com/sorrycc/Mayoi/releases/download/v$version/mayoi-$version-windows-arm64.tar.gz"
+            }
+        }
+    }
+}
